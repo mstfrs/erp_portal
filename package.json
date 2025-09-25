@@ -9,15 +9,35 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@heroui/button": "^2.2.26",
+    "@heroui/card": "^2.2.24",
+    "@heroui/drawer": "^2.2.23",
+    "@heroui/react": "^2.8.4",
+    "@heroui/spinner": "^2.2.23",
+    "@heroui/system": "^2.4.22",
+    "@heroui/theme": "^2.4.22",
+    "axios": "^1.11.0",
+    "cookies-next": "^6.1.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "framer-motion": "^12.23.21",
+    "frappe-react-sdk": "^1.12.0",
+    "lucide-react": "^0.544.0",
+    "next": "15.5.2",
+    "next-auth": "^4.24.11",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.2"
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "swiper": "^12.0.2",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "@types/react": "19.1.13",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4"
   }
 }
