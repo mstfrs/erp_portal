@@ -4,11 +4,30 @@ import { ShoppingCart, Trash2, Plus, Minus } from "lucide-react";
 import CartButton from "./CartButton";
 import useERPStore from "@/app/store/useERPStore";
 import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter} from "@heroui/react";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 export default function Cart() {
   const { cart, increaseQty, decreaseQty, removeFromCart, clearCart,isCartOpen,setIsCartOpen } = useERPStore();
-
-
+  
+  const cartTotal = cart.reduce((sum, item) => {
+    const price = Number(item.price_list_rate) || 0;
+    const qty = Number(item.qty) || 0;
+    return sum + price * qty;
+  }, 0);
+  const handleCheckout = async () => {
+    const res = await fetch("/api/checkout_sessions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cart }), // 🔑 burada gönderiyoruz
+    });
+    const { id } = await res.json();
+  
+    const stripe = await stripePromise;
+    await stripe.redirectToCheckout({ sessionId: id });
+  };
+  
 
   return (
       <>
@@ -26,7 +45,7 @@ export default function Cart() {
                 <DrawerBody>
                   <div className="p-1 space-y-1">
                     {cart.map((item, index) => (
-                      <Card key={index} className=" border-gray-300 border-b-2">
+                      <Card key={index} className=" ">
                         <CardHeader className="flex items-center gap-4">
                           <img
                             src={`${process.env.NEXT_PUBLIC_SITE_NAME}${item.image}`}
@@ -48,7 +67,7 @@ export default function Cart() {
                             <Button isIconOnly size="sm" variant="bordered" onPress={() => increaseQty(item.item_code)}>
                               <Plus className="w-4 h-4" />
                             </Button>
-                            <Button isIconOnly size="sm" color="danger" onPress={() => removeFromCart(item.item_code)}>
+                            <Button isIconOnly size="sm" color="primary" onPress={() => removeFromCart(item.item_code)}>
                               <Trash2 className="w-4 h-4" />
                             </Button>
                           </div>
@@ -60,12 +79,21 @@ export default function Cart() {
                   </div>
                 </DrawerBody>
                 )}
-                <DrawerFooter>
+                <DrawerFooter className="flex flex-col gap-4">
+               <div className="w-full flex items-center justify-between py-2">
+                 <span className="text-sm text-gray-600">Cart Total</span>
+                 <span className="font-semibold">{cartTotal.toFixed(2)}</span>
+               </div>
                <div className="flex w-full justify-between gap-4">
-                <Button color="danger" onPress={clearCart} className="">
+            
+                <Button color="primary" variant="shadow" onPress={clearCart} className="">
                       Clear Cart
                     </Button>
-                  <Button color="danger" variant="light" onPress={onClose} >
+                    <Button color="primary" variant="shadow"  className="w-full" onPress={handleCheckout}>
+                      Checkout
+                    </Button>
+                   
+                  <Button color="primary" variant="shadow" onPress={onClose} >
                     Close
                   </Button>
                </div>
