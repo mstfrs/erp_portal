@@ -13,7 +13,7 @@ export default function Cart() {
   return (
       <>
        
-        <Drawer backdrop="blur" placement="right" isOpen={isCartOpen} onOpenChange={()=>setIsCartOpen(!isCartOpen)} className=" bg-white ax-w-md h-dvh">
+        <Drawer backdrop="blur" placement="right" isOpen={isCartOpen} onOpenChange={()=>setIsCartOpen(!isCartOpen)} className=" max-w-md bg-white ax-w-md h-dvh">
           <DrawerContent>
             {(onClose) => (
               <>
@@ -56,19 +56,20 @@ export default function Cart() {
                       </Card>
                     ))}
 
-                    <Button color="danger" onPress={clearCart} className="w-full mt-4">
-                      Clear Cart
-                    </Button>
+                  
                   </div>
                 </DrawerBody>
                 )}
                 <DrawerFooter>
-                  <Button color="danger" variant="light" onPress={onClose} className="w-full absolute bottom-5 left-0">
+               <div className="flex w-full justify-between gap-4">
+                <Button color="danger" onPress={clearCart} className="">
+                      Clear Cart
+                    </Button>
+                  <Button color="danger" variant="light" onPress={onClose} >
                     Close
                   </Button>
-                  {/* <Button color="primary" onPress={onClose}>
-                    Action
-                  </Button> */}
+               </div>
+               
                 </DrawerFooter>
               </>
             )}

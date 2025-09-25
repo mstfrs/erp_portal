@@ -24,9 +24,9 @@ const geistMono = Geist_Mono({
 export default async function RootLayout({ children }) {
   const session = await getServerSession();
   return (
-    <html lang="en">
+    <html lang="en" className="light">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         <SessionProviderWrapper session={session}>
           <HeroProvider>

@@ -20,7 +20,7 @@
     "cookies-next": "^6.1.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "framer-motion": "^12.23.21",
+    "framer-motion": "^12.23.22",
     "frappe-react-sdk": "^1.12.0",
     "lucide-react": "^0.544.0",
     "next": "15.5.2",
