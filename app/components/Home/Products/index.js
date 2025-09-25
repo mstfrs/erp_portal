@@ -6,7 +6,7 @@ const Products = () => {
   return (
     <>
     
-    <h1 className='text-2xl font-bold text-center'>Ürünler</h1>
+    <h1 className='text-2xl font-bold text-center'>Products</h1>
       <div className='flex flex-wrap gap-6 w-full'>
         
       {items.map((item,index) => (

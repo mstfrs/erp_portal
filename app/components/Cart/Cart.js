@@ -8,13 +8,7 @@ import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter} fro
 export default function Cart() {
   const { cart, increaseQty, decreaseQty, removeFromCart, clearCart,isCartOpen,setIsCartOpen } = useERPStore();
 
-  if (cart.length === 0) {
-    return (
-      <div className="p-4">
-        <p className="text-red-500">Sepetiniz boş 🛒</p>
-      </div>
-    );
-  }
+
 
   return (
       <>
@@ -23,7 +17,12 @@ export default function Cart() {
           <DrawerContent>
             {(onClose) => (
               <>
-                <DrawerHeader className="flex flex-col gap-1">Sepetim</DrawerHeader>
+                <DrawerHeader className="flex flex-col gap-1">My Cart</DrawerHeader>
+                {cart.length === 0 ? (
+                    <div className="p-4">
+                      <p className="text-red-500">Your cart is empty 🛒</p>
+                    </div>
+                  ) : (
                 <DrawerBody>
                   <div className="p-1 space-y-1">
                     {cart.map((item, index) => (
@@ -58,17 +57,18 @@ export default function Cart() {
                     ))}
 
                     <Button color="danger" onPress={clearCart} className="w-full mt-4">
-                      Sepeti Temizle
+                      Clear Cart
                     </Button>
                   </div>
                 </DrawerBody>
+                )}
                 <DrawerFooter>
-                  <Button color="danger" variant="light" onPress={onClose}>
+                  <Button color="danger" variant="light" onPress={onClose} className="w-full absolute bottom-5 left-0">
                     Close
                   </Button>
-                  <Button color="primary" onPress={onClose}>
+                  {/* <Button color="primary" onPress={onClose}>
                     Action
-                  </Button>
+                  </Button> */}
                 </DrawerFooter>
               </>
             )}

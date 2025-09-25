@@ -47,8 +47,8 @@ const Suppliers = () => {
   return (
     <>
       {loading ? <Loading /> :
-        <section className="overflow-hidden pt-17.5">
-          <h1 className='text-2xl font-bold text-center'>Markalar</h1>
+        <section className="overflow-hidden ">
+          <h1 className='text-2xl font-bold text-center'>Brands</h1>
           <div className="flex w-full mx-auto px-4 sm:px-8 xl:px-0 py-2 ">
 
               {/* All Suppliers */}
@@ -59,7 +59,7 @@ const Suppliers = () => {
 
                 <div className="flex justify-center">
                   <h3 className="inline-block font-medium text-center text-dark bg-gradient-to-r from-blue to-blue bg-[length:0px_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_1px] group-hover:text-blue">
-                    Tüm Markalar
+                    All Brands
                   </h3>
                 </div>
               </div>

@@ -57,7 +57,7 @@ const Navbar = ({ session }) => {
                             <button className="absolute -top-1 left-3 text-[8px] text-white bg-slate-600 size-3.5 rounded-full">{cart.length}</button>
                         </div>
 
-                        <button className="px-8 py-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full" onClick={() => session ? signOut({ callbackUrl: "/auth/login" }) : router.push("/auth/login")}>
+                        <button className="cursor-pointer px-8 py-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full" onClick={() => session ? signOut({ callbackUrl: "/auth/login" }) : router.push("/auth/login")}>
                             {session ? "Logout" : "Login"}
                         </button>
 

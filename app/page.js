@@ -30,7 +30,7 @@ export default  function Dashboard() {
     return null;
   }
   return (
-    <div className='bg-slate-500'>
+    <div className=''>
       {/* <h1>Merhaba, {session.user.name}</h1>
       <button onClick={() => signOut({ callbackUrl: "/auth/login" })}>Logout</button> */}
       {/* <ItemCard list={items} /> */}
