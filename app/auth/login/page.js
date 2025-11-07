@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -25,13 +26,11 @@ export default function LoginPage() {
 
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const company = e.target.company.value;
 
     // Validasyon
     const newErrors = {};
     if (!email) newErrors.email = "E-posta adresi gerekli";
     if (!password) newErrors.password = "Şifre gerekli";
-    if (!company) newErrors.company = "Şirket adı gerekli";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -56,7 +55,9 @@ export default function LoginPage() {
       const frappeData = await frappeAuthRes.json();
 
       if (!frappeData.success) {
-        setErrors({ general: "Giriş başarısız. Lütfen bilgilerinizi kontrol edin." });
+        // Backend'den gelen hata mesajını kullan
+        const errorMessage = frappeData.message || "Giriş başarısız. Lütfen bilgilerinizi kontrol edin.";
+        setErrors({ general: errorMessage });
         setLoading(false);
         return;
       }
@@ -250,12 +251,12 @@ export default function LoginPage() {
             <div className="text-center">
               <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark">
                 Hesabınız yok mu?{" "}
-                <a 
-                  href="#" 
+                <Link 
+                  href="/auth/register" 
                   className="font-medium text-primary hover:text-primary/80 transition-colors underline"
                 >
                   Şimdi Kayıt Olun
-                </a>
+                </Link>
               </p>
             </div>
           </div>

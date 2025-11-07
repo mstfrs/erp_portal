@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:frappe": "node scripts/test-frappe-connection.js",
+    "test:login": "node scripts/test-frappe-login.js"
   },
   "dependencies": {
     "@heroui/button": "^2.2.26",
@@ -20,6 +22,7 @@
     "axios": "^1.11.0",
     "cookies-next": "^6.1.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^5.1.0",
     "framer-motion": "^12.23.22",
     "frappe-react-sdk": "^1.12.0",
