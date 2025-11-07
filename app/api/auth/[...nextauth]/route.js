@@ -26,7 +26,7 @@ const authHandler = NextAuth({
 
           if (!loginRes.ok) return null
 
-          // Frappe login'den dönen sid cookie’sini al
+          // Frappe login'den dönen sid cookie'sini al
           const rawCookie = loginRes.headers.get("set-cookie")
           const sid = rawCookie?.split(";")[0] // sadece "sid=xxxx" kısmını al
 
@@ -34,7 +34,8 @@ const authHandler = NextAuth({
           return {
             id: credentials.username,
             name: credentials.username,
-            sid, // sid’i kullanıcı objesine koy
+            email: credentials.username,
+            sid, // sid'i kullanıcı objesine koy
           }
         } catch (e) {
           console.error("Frappe login error:", e)

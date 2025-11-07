@@ -1,12 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import { signIn } from "next-auth/react";
+import { useState, useEffect } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const { data: session, status } = useSession();
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  // Eğer kullanıcı zaten login olmuşsa anasayfaya yönlendir
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,22 +40,68 @@ export default function LoginPage() {
     }
 
     try {
+      // 1. ADIM: Frappe'ye direkt istek - sid cookie'sini tarayıcıya yaz
+      const frappeAuthRes = await fetch("/api/frappe-auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: email,
+          password,
+        }),
+        credentials: "include", // Cookie'leri al ve kaydet
+      });
+
+      const frappeData = await frappeAuthRes.json();
+
+      if (!frappeData.success) {
+        setErrors({ general: "Giriş başarısız. Lütfen bilgilerinizi kontrol edin." });
+        setLoading(false);
+        return;
+      }
+
+      // 2. ADIM: NextAuth session oluştur
       const res = await signIn("credentials", {
         username: email,
         password,
-        redirect: true,
-        callbackUrl: "/",
+        redirect: false,
       });
 
       if (res?.error) {
-        setErrors({ general: "Giriş başarısız. Lütfen bilgilerinizi kontrol edin." });
+        setErrors({ general: "Session oluşturulamadı. Lütfen tekrar deneyin." });
+        setLoading(false);
+        return;
+      }
+
+      if (res?.ok) {
+        // Login başarılı - session hazır olana kadar bekle
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Anasayfaya yönlendir
+        window.location.href = "/";
       }
     } catch (error) {
       setErrors({ general: "Bir hata oluştu. Lütfen tekrar deneyin." });
-    } finally {
       setLoading(false);
     }
   };
+
+  // Session yükleniyorsa loading göster
+  if (status === "loading") {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background-light dark:bg-background-dark">
+        <div className="text-text-primary-light dark:text-text-primary-dark">
+          Yükleniyor...
+        </div>
+      </div>
+    );
+  }
+
+  // Zaten login olmuşsa (redirect yapılana kadar) boş sayfa göster
+  if (status === "authenticated") {
+    return null;
+  }
 
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center p-4 bg-background-light dark:bg-background-dark">
@@ -61,7 +117,7 @@ export default function LoginPage() {
               <path d="M18 18.5a1.5 1.5 0 0 1-1 1.415V21a1 1 0 0 1-2 0v-1.085a1.5 1.5 0 0 1 0-2.83V16a1 1 0 0 1 2 0v1.085a1.5 1.5 0 0 1 1 1.415zM3 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2H3V4zm0 4h14v4.08a3.5 3.5 0 0 0-2 .668V9H5v9h6.08a3.51 3.51 0 0 0 .668 2H4a1 1 0 0 1-1-1V8z" />
             </svg>
             <span className="text-2xl font-bold tracking-tight text-text-primary-light dark:text-text-primary-dark">
-              SupplyCo
+              CC Culinary
             </span>
           </div>
         </div>
@@ -72,7 +128,7 @@ export default function LoginPage() {
             {/* Başlık */}
             <div className="flex flex-col gap-1 mb-6 text-center">
               <p className="text-3xl font-bold leading-tight tracking-tight text-text-primary-light dark:text-text-primary-dark">
-                Tekrar Hoşgeldiniz
+                Hoşgeldiniz
               </p>
               <p className="text-text-secondary-light dark:text-text-secondary-dark text-base font-normal leading-normal">
                 Devam etmek için hesabınıza giriş yapın
@@ -166,31 +222,6 @@ export default function LoginPage() {
                 </label>
               </div>
 
-              {/* Şirket Adı */}
-              <div className="flex flex-col">
-                <label className="flex flex-col">
-                  <p className={`text-sm font-medium leading-normal pb-2 ${
-                    errors.company ? "text-error" : "text-text-primary-light dark:text-text-primary-dark"
-                  }`}>
-                    Şirket Adı
-                  </p>
-                  <input
-                    name="company"
-                    type="text"
-                    placeholder="Şirket adını girin"
-                    className={`form-input flex w-full min-w-0 resize-none overflow-hidden rounded-lg text-text-primary-light dark:text-text-primary-dark focus:outline-none focus:ring-2 ${
-                      errors.company 
-                        ? "border-error focus:ring-error" 
-                        : "border-border-light dark:border-border-dark focus:ring-primary"
-                    } bg-content-light dark:bg-content-dark h-12 placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark px-4 py-2 text-base font-normal leading-normal`}
-                  />
-                  {errors.company && (
-                    <p className="text-error text-xs font-normal leading-normal pt-1 px-1">
-                      {errors.company}
-                    </p>
-                  )}
-                </label>
-              </div>
 
               {/* Login Button */}
               <div className="flex pt-2">
