@@ -1,6 +1,27 @@
 // src/lib/auth.js
 import CredentialsProvider from 'next-auth/providers/credentials'
 
+/**
+ * Frappe'den logout yapar
+ */
+export async function logoutFromFrappe() {
+  try {
+    const response = await fetch("/api/auth/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Logout error:", error);
+    return { success: false, message: error.message };
+  }
+}
+
 export const authOptions = {
   providers: [
     CredentialsProvider({

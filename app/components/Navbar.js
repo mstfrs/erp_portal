@@ -1,6 +1,20 @@
+"use client";
+
 import Link from 'next/link'
+import { useSession, signOut } from 'next-auth/react'
+import { logoutFromFrappe } from '@/services/auth'
 
 export default function Navbar() {
+  const { data: session, status } = useSession();
+
+  const handleLogout = async () => {
+    // 1. Frappe'den logout
+    await logoutFromFrappe();
+    
+    // 2. NextAuth session'ı temizle
+    await signOut({ callbackUrl: "/" });
+  };
+
   return (
     <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark py-4">
       <div className="flex items-center gap-3 text-text-light dark:text-text-dark">
@@ -23,12 +37,31 @@ export default function Navbar() {
           <Link className="text-sm font-medium hover:text-primary transition-colors" href="#">Services</Link>
           <Link className="text-sm font-medium hover:text-primary transition-colors" href="#">Contact</Link>
         </nav>
-        <Link
-          href="/auth/login"
-          className="flex min-w-[84px] items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold tracking-[0.015em] hover:opacity-90"
-        >
-          Login
-        </Link>
+        
+        {status === "loading" ? (
+          <div className="flex min-w-[84px] items-center justify-center rounded-lg h-10 px-4 bg-gray-200 dark:bg-gray-700">
+            <span className="text-sm">...</span>
+          </div>
+        ) : session ? (
+          <div className="flex items-center gap-4">
+            <span className="text-sm text-text-light/80 dark:text-text-dark/80">
+              {session.user?.email || session.user?.name}
+            </span>
+            <button
+              onClick={handleLogout}
+              className="flex cursor-pointer min-w-[84px] items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold tracking-[0.015em] hover:bg-red-600 transition-colors"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <Link
+            href="/auth/login"
+            className="flex min-w-[84px] items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold tracking-[0.015em] hover:opacity-90"
+          >
+            Login
+          </Link>
+        )}
       </div>
 
       <div className="md:hidden">
