@@ -1,4 +1,4 @@
-import { authOptions } from "@/lib/auth"
+import { authOptions } from "@/services/auth"
 import { getServerSession } from "next-auth"
 
 export async function GET() {

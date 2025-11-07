@@ -12,7 +12,7 @@ const authHandler = NextAuth({
       async authorize(credentials) {
         try {
           // Frappe login isteği
-          const loginRes = await fetch("http://63.176.180.142:8001/api/method/login", {
+          const loginRes = await fetch(process.env.NEXT_PUBLIC_SITE_NAME + "/api/method/login", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

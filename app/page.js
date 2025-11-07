@@ -1,18 +1,18 @@
 "use client";
 
-import { authOptions } from "@/lib/auth";
-import { getItems } from "@/lib/items/items";
+import { authOptions } from "@/services/auth";
+import { getItems } from "@/services/items/items";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Home from "./components/Home";
-import Navbar from "./components/Navbar";
+import useERPStore from "./store/useERPStore";
 
 
 export default  function Dashboard() {
   const { data: session, status } = useSession(authOptions);
   const router = useRouter();
-  const [items, setItems] = useState([]);
+  // const [items, setItems] = useState([]);
+  const { setItems } = useERPStore();
 
   useEffect(() => {
     if (status === 'loading') return; // Yükleniyor
@@ -31,11 +31,7 @@ export default  function Dashboard() {
   }
   return (
     <div className=''>
-      {/* <h1>Merhaba, {session.user.name}</h1>
-      <button onClick={() => signOut({ callbackUrl: "/auth/login" })}>Logout</button> */}
-      {/* <ItemCard list={items} /> */}
-      <Navbar session={session} />
-      <Home />
+      Home Page
     </div>
   );
 }
