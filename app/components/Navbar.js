@@ -28,7 +28,7 @@ export default function Navbar() {
             />
           </svg>
         </div>
-        <h2 className="text-xl font-bold leading-tight tracking-[-0.015em]">FoodSupply Co.</h2>
+        <h2 className="text-xl font-bold leading-tight tracking-[-0.015em] text-primary">CC Culinary</h2>
       </div>
 
       <div className="hidden md:flex flex-1 justify-end gap-8">
@@ -49,7 +49,7 @@ export default function Navbar() {
             </span>
             <button
               onClick={handleLogout}
-              className="flex cursor-pointer min-w-[84px] items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold tracking-[0.015em] hover:bg-red-600 transition-colors"
+              className="flex cursor-pointer min-w-[84px] items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold tracking-[0.015em] hover:bg-primary/90 transition-colors"
             >
               Logout
             </button>

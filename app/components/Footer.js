@@ -16,7 +16,7 @@ export default function Footer() {
                 />
               </svg>
             </div>
-            <h2 className="text-lg font-bold">FoodSupply Co.</h2>
+            <h2 className="text-lg font-bold text-primary">CC Culinary</h2>
           </div>
           <p className="text-sm text-text-light/70 dark:text-text-dark/70">© 2024 FoodSupply Co. All Rights Reserved.</p>
         </div>
