@@ -40,7 +40,7 @@ export default function LoginPage() {
 
     try {
       // 1. ADIM: Frappe'ye direkt istek - sid cookie'sini tarayıcıya yaz
-      const frappeAuthRes = await fetch("/api/frappe-auth", {
+      const frappeAuthRes = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
