@@ -87,7 +87,7 @@ export default function KVKKPage() {
               <p className="leading-relaxed">
                 Toplanan kişisel verileriniz, yukarıda belirtilen amaçların gerçekleştirilmesi doğrultusunda; 
                 iş ortaklarımıza, tedarikçilerimize, kanunen yetkili kamu kurumlarına ve özel kişilere 
-                KVKK&apos;nın 8. ve 9. maddelerinde belirtilen kişisel veri işleme şartları ve amaçları 
+                KVKK nın 8. ve 9. maddelerinde belirtilen kişisel veri işleme şartları ve amaçları 
                 çerçevesinde aktarılabilecektir.
               </p>
             </section>
@@ -97,7 +97,7 @@ export default function KVKKPage() {
                 5. Kişisel Veri Toplamanın Yöntemi ve Hukuki Sebebi
               </h2>
               <p className="leading-relaxed">
-                Kişisel verileriniz, elektronik ortamda kayıt altına alınarak KVKK&apos;nın 5. ve 6. maddelerinde 
+                Kişisel verileriniz, elektronik ortamda kayıt altına alınarak KVKK nın 5. ve 6. maddelerinde 
                 belirtilen kişisel veri işleme şartları ve amaçları kapsamında işlenmektedir.
               </p>
             </section>
@@ -107,7 +107,7 @@ export default function KVKKPage() {
                 6. Kişisel Veri Sahibinin Hakları
               </h2>
               <p className="leading-relaxed mb-2">
-                KVKK&apos;nın 11. maddesi uyarınca kişisel veri sahipleri olarak aşağıdaki haklara sahipsiniz:
+                KVKK nın 11. maddesi uyarınca kişisel veri sahipleri olarak aşağıdaki haklara sahipsiniz:
               </p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
@@ -115,7 +115,7 @@ export default function KVKKPage() {
                 <li>Kişisel verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme</li>
                 <li>Yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme</li>
                 <li>Kişisel verilerin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme</li>
-                <li>KVKK&apos;nın 7. maddesinde öngörülen şartlar çerçevesinde kişisel verilerin silinmesini veya yok edilmesini isteme</li>
+                <li>KVKK nın 7. maddesinde öngörülen şartlar çerçevesinde kişisel verilerin silinmesini veya yok edilmesini isteme</li>
                 <li>Kişisel verilerin düzeltilmesi, silinmesi ya da yok edilmesi halinde bu işlemlerin aktarıldığı üçüncü kişilere bildirilmesini isteme</li>
                 <li>İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme</li>
                 <li>Kişisel verilerin kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme</li>
@@ -127,7 +127,7 @@ export default function KVKKPage() {
                 7. İletişim
               </h2>
               <p className="leading-relaxed">
-                Kişisel verileriniz ile ilgili taleplerinizi, KVKK&apos;nın 13. maddesinin 1. fıkrası gereğince 
+                Kişisel verileriniz ile ilgili taleplerinizi, KVKK nın 13. maddesinin 1. fıkrası gereğince 
                 Şirketimize başvurabilirsiniz. Başvurularınızı info@ccculinary.com e-posta adresi üzerinden 
                 veya şirket adresimize yazılı olarak iletebilirsiniz.
               </p>
