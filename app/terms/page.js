@@ -107,7 +107,7 @@ export default function TermsPage() {
               </h2>
               <p className="leading-relaxed">
                 Platformun kullanımından doğabilecek dolaylı zararlardan şirketimiz sorumlu değildir. 
-                Hizmetlerimiz "olduğu gibi" sunulmaktadır.
+                Hizmetlerimiz &quot;olduğu gibi&quot; sunulmaktadır.
               </p>
             </section>
 

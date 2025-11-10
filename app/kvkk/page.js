@@ -41,7 +41,7 @@ export default function KVKKPage() {
                 1. Veri Sorumlusu
               </h2>
               <p className="leading-relaxed">
-                6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, kişisel verileriniz; 
+                6698 sayılı Kişisel Verilerin Korunması Kanunu (&quot;KVKK&quot;) uyarınca, kişisel verileriniz; 
                 veri sorumlusu olarak CC Culinary tarafından aşağıda açıklanan kapsamda işlenebilecektir.
               </p>
             </section>
