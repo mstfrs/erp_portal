@@ -96,7 +96,7 @@ export default function TermsPage() {
                 6. Fikri Mülkiyet
               </h2>
               <p className="leading-relaxed">
-                Platform üzerindeki tüm içerik, görseller, logolar ve diğer materyaller CC Culinary'nin 
+                Platform üzerindeki tüm içerik, görseller, logolar ve diğer materyaller CC Culinary nin 
                 fikri mülkiyetidir ve izinsiz kullanılamaz.
               </p>
             </section>
@@ -107,7 +107,7 @@ export default function TermsPage() {
               </h2>
               <p className="leading-relaxed">
                 Platformun kullanımından doğabilecek dolaylı zararlardan şirketimiz sorumlu değildir. 
-                Hizmetlerimiz "olduğu gibi" sunulmaktadır.
+                Hizmetlerimiz &quot;olduğu gibi&quot; sunulmaktadır.
               </p>
             </section>
 
