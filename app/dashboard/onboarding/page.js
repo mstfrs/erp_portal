@@ -156,7 +156,7 @@ export default function OnboardingDashboard() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-6">
                 <div className="flex flex-col">
                   <p className="text-lg font-bold text-text-primary-light dark:text-text-primary-dark">
-                    CC Culinary'de Satış Yapmak İster misiniz?
+                    CC Culinary&apos;de Satış Yapmak İster misiniz?
                   </p>
                   <p className="text-text-secondary-light dark:text-text-secondary-dark text-base mt-1">
                     Daha fazla restorana ulaşmak için satıcı olun.

@@ -97,7 +97,7 @@ export default function PendingApprovalDashboard() {
               disabled
               className="mt-8 flex w-full items-center justify-center rounded-lg h-11 px-6 bg-transparent text-text-secondary-light dark:text-text-secondary-dark text-sm font-bold border border-border-light dark:border-border-dark opacity-60 cursor-not-allowed"
             >
-              Dashboard'a Git
+              Dashboard&apos;a Git
             </button>
           </div>
         </div>
