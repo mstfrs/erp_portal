@@ -90,3 +90,28 @@ body {
     @apply font-sans bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark antialiased;
   }
 }
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #C4C8CC;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: #2D372E;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #4B554C;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6B7280;
+}
